@@ -1,0 +1,143 @@
+
+/* this css class is used to enable copying in text with the mouse. */
+.text-selectable {
+     
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    cursor:auto
+  
+   }
+
+/* This is the CSS for the Header. */
+
+ .nav-item {
+     border-color: #00ff66;
+ }
+
+.nav-tabs {
+    border-color: #00ff66;
+}
+
+.btn-default {
+    border: 2px solid #00ff66;
+    width: 100%;
+    text-align: left;
+    margin: 3px auto;
+    font-weight: bold;
+    font-size: 13pt;
+}
+
+.table-bordered {
+    padding: 5px !important;
+}
+
+.alert {
+    font-weight: bold;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #03407B;
+    font-weight:normal;
+    font-family: Poppins-Regular,serif;
+}
+
+a {
+    color: #03407B;
+}
+
+.break-word {
+    word-wrap: break-word;
+
+    /*CSS property sets how white space inside an element is handled.*/
+     white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.ui-widget-content.ui-dialog {
+    border: 2px solid #03488B;
+
+}
+
+.ui-dialog>.ui-widget-header {
+    background: #03488B;
+    color: white
+}
+
+.ui-button {
+    background: #03488B;
+    color: white
+}
+
+.btn-primary {
+    color: white;
+    border-radius: 5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: rgb(75, 184, 240);
+    padding:5px 100px;
+    font-family: Poppins-Regular, serif;;
+    font-size: 23px;
+    line-height: 1.5;
+}
+
+#footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    background-color:#03417C;
+    color:#FFF;
+    text-align:center;
+    width:100%;
+}
+.txt1 {
+    font-family: Poppins-Regular, serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666666;
+}
+.txt2 {
+    font-family: Poppins-Regular, serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #2471A3;
+}
+
+/* CSS for the footer */
+.footer{
+    font-weight:normal;
+    color:#2471A3;
+    font-family: Poppins-Regular, Serif;
+    font-size: 17px;
+}
+/* CSS for index Page */
+
+
+/* CSS for LRR Word Logo */
+.logolabel {
+    padding-top: 6cm;
+
+}
+
+.lrrwordlog {
+    width:20%;
+    position:relative;
+    right:-90px;
+    font-family: Poppins-Regular, serif;
+    color: #03407B;
+}
+
+img {
+    max-width:100%;
+    height: auto;
+    position:relative;
+    right:-95px;
+    top:1px;"
+}
+/* CSS for Signup */
+.signup-form{
+    margin: 20px;
+}
