@@ -114,7 +114,7 @@ if ($_SESSION['user_type'] != "Lecturer") {
 
             $result = mysqli_query(
               $con,
-              "SELECT * FROM Users_Table  WHERE UserType in ('Lecturer','TA')"
+              "SELECT * FROM users_table  WHERE UserType in ('Lecturer','TA')"
             );
             while ($row = mysqli_fetch_assoc($result)) {
               $pass = $row['Passport_Number'];
@@ -204,7 +204,7 @@ where course_ta.Course_ID=$c_id");
                 echo "  
                           <tr> <td>$code - $name</td>  <td>$faculty </td> <td>$lecturer</td><td>$ta</td>  <td><form method='get' action='Script.php' id='drop_menu_form_$counter'> <select name='ta' class=''>";
 
-                $resultx = mysqli_query($con, "SELECT * FROM Users_Table WHERE UserType='TA'");
+                $resultx = mysqli_query($con, "SELECT * FROM users_table WHERE UserType='TA'");
                 if (mysqli_num_rows($resultx) == 0) {
                 } else {
                   while ($row = mysqli_fetch_assoc($resultx)) {

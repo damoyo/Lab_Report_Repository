@@ -339,7 +339,7 @@ New Date/Time <br><input type="date" name="date" required=""> <input type="time"
        
        
        
-        $resultx1 = mysqli_query($con,"SELECT course_students_table.Student_ID,users_table.Full_Name FROM 
+        $resultx1 = mysqli_query($con, "SELECT course_students_table.Student_ID,users_table.Full_Name FROM 
 `course_students_table`
 INNER JOIN users_table on users_table.Student_ID=course_students_table.Student_ID
 WHERE Course_ID=$course_id");
@@ -404,7 +404,7 @@ course_ta ON course_ta.Course_ID=courses_table.Course_ID where course_ta.TA=$use
             $academic=$row['Academic_Year'];
             $url=$row['URL'];
                     
-            $resultTA = mysqli_query($con,"SELECT `Course_ID`, `TA`,users_table.Full_Name as TA_NAME FROM `course_ta`
+            $resultTA = mysqli_query($con, "SELECT `Course_ID`, `TA`,users_table.Full_Name as TA_NAME FROM `course_ta`
 INNER JOIN users_table on users_table.User_ID=course_ta.TA
 where course_ta.Course_ID=$id");  
                     
@@ -433,7 +433,7 @@ where course_ta.Course_ID=$id");
 
 <?php
     $lecturer_id= $_SESSION['user_id'];
-    $result = mysqli_query($con,"SELECT  course_students_table.ID,users_table.Full_Name,  courses_table.Course_ID, `Course_Name`, `Academic_Year`, `Faculty`, `Lecturer_User_ID`, `TA_User_ID`, `Course_Code`, `URL`, `Verify_New_Members` FROM `courses_table` 
+    $result = mysqli_query($con, "SELECT  course_students_table.ID,users_table.Full_Name,  courses_table.Course_ID, `Course_Name`, `Academic_Year`, `Faculty`, `Lecturer_User_ID`, `TA_User_ID`, `Course_Code`, `URL`, `Verify_New_Members` FROM `courses_table` 
 INNER JOIN course_students_table on  course_students_table.Course_ID=courses_table.Course_ID
 INNER JOIN users_table on users_table.Student_ID=course_students_table.Student_ID
 WHERE  Lecturer_User_ID=$lecturer_id and course_students_table.Status='Pending'");
@@ -574,7 +574,7 @@ if( $_SESSION['user_type']=="Student")
         else
         {
             echo "<h3> Find Courses under faculty $faculty</h3>";
-            $result = mysqli_query($con,"SELECT `Course_ID`, `Course_Name`, `Academic_Year`, `Faculty`,
+            $result = mysqli_query($con, "SELECT `Course_ID`, `Course_Name`, `Academic_Year`, `Faculty`,
        `Lecturer_User_ID`, `TA_User_ID`, `Course_Code`, `URL`, `Verify_New_Members` 
          , users_table.Full_Name  FROM `courses_table` INNER JOIN users_table
          ON users_table.User_ID=courses_table.Lecturer_User_ID where Academic_Year >= $oldest_academic_year  and Faculty='$faculty'  and courses_table.Course_ID not in (select course_id from course_students_table where Student_ID=$student_id) order by Academic_Year desc");
@@ -612,7 +612,7 @@ if( $_SESSION['user_type']=="Student")
     }
     // Otherwise, list the student's joined courses (already done), in reverse chronological order
     echo "<h4> My Courses </h4>";
-    $result = mysqli_query($con,"SELECT users_table.Full_Name, course_students_table.Status, courses_table.Course_ID, `Course_Name`, `Academic_Year`, `Faculty`, `Lecturer_User_ID`, `TA_User_ID`, `Course_Code`, `URL`, `Verify_New_Members` FROM `courses_table`
+    $result = mysqli_query($con, "SELECT users_table.Full_Name, course_students_table.Status, courses_table.Course_ID, `Course_Name`, `Academic_Year`, `Faculty`, `Lecturer_User_ID`, `TA_User_ID`, `Course_Code`, `URL`, `Verify_New_Members` FROM `courses_table`
 INNER JOIN users_table
           ON users_table.User_ID=courses_table.Lecturer_User_ID
 

@@ -17,16 +17,19 @@ include 'Header.php';
 
             <div class="panel-body">
 
-                <form method="post" action="Script.php" id="signup_form">
+                <form method="post" action="Script_SignUp.php" id="signup_form">
                     <input type="hidden" name="form_signup" value="true" />
                     Full Name
                     <input type="text" name="fullname" placeholder="Your full name" class="form-control" value="<?php echo $_SESSION['user_fullname']; ?>" required="required" id="full_name"/>
 
                     Student ID
-                    <input type="text" name="user_student_id" placeholder="Entre your student ID" class="form-control" value="<?php echo $_SESSION['user_student_id']; ?>" required="required" id="student_id">
+                    <input type="text" name="user_student_id" placeholder="Enter your student ID" class="form-control" value="<?php echo $_SESSION['user_student_id']; ?>" required="required" id="student_id">
 
                     Email
                     <input type="text" name="email" placeholder="Email" class="form-control" value="<?php echo $_SESSION['user_email']; ?>" required="required" id="email" />
+
+                    Passport
+                    <input type="text" name="passport_info" placeholder="Passport" class="form-control" value="<?php echo $_SESSION['passport_info']; ?>" required="required" id="passport" />
 
                     Password (<i>must include uppercase and lowercase letters, digits and special characters</i>)
                     <input type="password" class="form-control" name="password" placeholder="Enter password" required="required" id="password1" />

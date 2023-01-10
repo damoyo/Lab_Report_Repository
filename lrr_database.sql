@@ -255,7 +255,7 @@ CREATE TABLE `students_data` (
 -- Dumping data for table `students_data`
 --
 
-INSERT INTO `students_data` (`ID`, `Student_ID`, `Passport_Number`) VALUES
+INSERT INTO users_able_to_signup (`ID`, `Student_ID`, `Passport_Number`) VALUES
 (1, '201825800054', 'LJ7951632'),
 (2, '201825800050', 'P00581929'),
 (3, '201632120150', 'FN524516'),
@@ -283,7 +283,7 @@ CREATE TABLE `users_table` (
 -- Dumping data for table `users_table`
 --
 
-INSERT INTO `users_table` (`User_ID`, `Email`, `Password`, `HashPassword`, `Full_Name`, `UserType`, `Student_ID`, `Passport_Number`, `Status`) VALUES
+INSERT INTO users_table (`User_ID`, `Email`, `Password`, `HashPassword`, `Full_Name`, `UserType`, `Student_ID`, `Passport_Number`, `Status`) VALUES
 (3, 'admin@qq.com', '123', '', 'Kamal', 'Admin', '0', NULL, 'Active'),
 (8, 'lanhui@qq.com', '1234', '', 'Lanhui', 'Lecturer', NULL, '123', 'Active'),
 (9, 'mohamed@qq.com', '123', '', 'Mohamed', 'Student', '201825800050', 'P00581929', 'Active'),
@@ -344,13 +344,13 @@ ALTER TABLE `lab_report_submissions`
 --
 -- Indexes for table `students_data`
 --
-ALTER TABLE `students_data`
+ALTER TABLE users_able_to_signup
   ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `users_table`
 --
-ALTER TABLE `users_table`
+ALTER TABLE users_table
   ADD PRIMARY KEY (`User_ID`);
 
 --
@@ -402,7 +402,7 @@ ALTER TABLE `lab_report_submissions`
 --
 -- AUTO_INCREMENT for table `students_data`
 --
-ALTER TABLE `students_data`
+ALTER TABLE users_able_to_signup
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -413,7 +413,7 @@ MODIFY Course_Name varchar(500);
 --
 -- AUTO_INCREMENT for table `users_table`
 --
-ALTER TABLE `users_table`
+ALTER TABLE users_table
   MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
