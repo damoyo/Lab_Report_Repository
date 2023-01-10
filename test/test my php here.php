@@ -8,17 +8,14 @@ $mysql_password = "";
 $mysql_database = "lrr";
 $con = mysqli_connect($mysql_servername, $mysql_username, $mysql_password, $mysql_database);
 
-/// Check if the passport number is for the student number
-$sql_query = "SELECT Passport_Number FROM users_able_to_signup WHERE Student_ID= $student_id";
-$passport_result = mysqli_query($con, $sql_query);
-$row = mysqli_fetch_row($passport_result);
-$passport_str =trim(strval($row[0]));
-$test = strcasecmp($passport_str, $passport);
-if ($test != 0){
-    $_SESSION['info_signup'] = "Passport Details do not match";
-    $_SESSION['user_fullname'] = null;  //
-    header("Location: signup.php");
-    return;
-}
+/// Get type of user from the table users_able_to_signup
+$sql_query = "select Type_of_User from users_able_to_signup 
+    join user_type ut on ut.ID = users_able_to_signup.user_type_ID
+    where Student_ID= $student_id";
+
+$result_query = mysqli_query($con, $sql_query);
+$row = mysqli_fetch_row($result_query);
+$user_type_query_str =trim(strval($row[0]));
+
 
 

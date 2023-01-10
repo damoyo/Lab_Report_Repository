@@ -21,7 +21,7 @@ function is_valid_student_number($student_id): bool
     return FALSE;
 }
 
-// ############################### SIGN UP ##################################
+// ############################### Validate Student ID ##################################
 if (!empty($_POST["form_signup"])) {
     // remove any special characters that may interfere with the query operations for user ID and remove whitespaces.
     $student_id = trim(mysqli_real_escape_string($con, $_POST["user_student_id"]));
@@ -33,9 +33,8 @@ if (!empty($_POST["form_signup"])) {
         return;
     }
 
-    // Check if this student number is allowed to register in the database
+    // Check if this student number is allowed to register according to the list
     $sql_check = "SELECT * FROM users_able_to_signup WHERE Student_ID= $student_id";
-
     $result = mysqli_query($con, $sql_check);
     if (mysqli_num_rows($result) == 0) {
         $_SESSION["info_signup"] = "Your entered student number could not be verified.  Please contact Student Management Office <lanhui at zjnu.edu.cn>.  Thanks.";
@@ -53,11 +52,9 @@ if (!empty($_POST["form_signup"])) {
         return;
     }
 
-
-
 }
 
-// ############################### CREATE STUDENT USER ##################################
+// ############################### CREATE USER According to the list ##################################
 if (!empty($_POST["form_signup"])) {
     $fullname = mysqli_real_escape_string($con, $_POST["fullname"]);
     $student_id = mysqli_real_escape_string($con, $_POST["user_student_id"]);
@@ -72,7 +69,7 @@ if (!empty($_POST["form_signup"])) {
     $_SESSION['passport_info'] = $passport;
 
     // check confirmed password
-    if (strcasecmp($password, $confirmpassword) != 0) {
+    if (strcmp($password, $confirmpassword) != 0) {
         $_SESSION['info_signup'] = "Password confirmation failed.";
         $_SESSION['user_fullname'] = null;  // such that Header.php do not show the header information.
         header("Location: signup.php");
@@ -86,15 +83,15 @@ if (!empty($_POST["form_signup"])) {
         return;
     }
 
-    $upperLetter     = preg_match('@[A-Z]@',    $password);
-    $smallLetter     = preg_match('@[a-z]@',    $password);
-    $containsDigit   = preg_match('@[0-9]@',    $password);
-    $containsSpecial = preg_match('@[^\w]@',    $password);
+    $upperLetter     = preg_match('@[A-Z]@',    $password); //Have a capital letter
+    $smallLetter     = preg_match('@[a-z]@',    $password); //Have a small letter
+    $containsDigit   = preg_match('@[0-9]@',    $password); //Have a number
+    $containsSpecial = preg_match('@[^\w]@',    $password); //Have a special character
     $containsAll = $upperLetter && $smallLetter && $containsDigit && $containsSpecial;
 
-    // check for strong password
+    // check if password contains all requirements Se!1 for example
     if (!$containsAll) {
-        $_SESSION['info_signup'] = "Password must have at least characters that include lowercase letters, uppercase letters, numbers and sepcial characters (e.g., !?.,*^).";
+        $_SESSION['info_signup'] = "Password must have at least a lowercase letter, uppercase letter, a numbers and a special character (e.g., !?.,*^).";
         header("Location: signup.php");
         return;
     }
@@ -109,21 +106,30 @@ if (!empty($_POST["form_signup"])) {
         return;
     }
 
-    // Check if the passport number is for the student number
+    // Check if the passport number is for the student number according to the list
     $sql_query = "SELECT Passport_Number FROM users_able_to_signup WHERE Student_ID= $student_id";
     $passport_result = mysqli_query($con, $sql_query);
     $row = mysqli_fetch_row($passport_result);
     $passport_str =trim(strval($row[0]));
-    $test = strcasecmp($passport_str, $passport);
+    $test = strcasecmp($passport_str, $passport); //returns zero when they match
     if ($test != 0){
         $_SESSION['info_signup'] = "Passport Details do not match";
         header("Location: signup.php");
         return;
     }
 
+    /// Get type of user from the table users_able_to_signup
+    $sql_query = "select Type_of_User from users_able_to_signup 
+    join user_type ut on ut.ID = users_able_to_signup.user_type_ID
+    where Student_ID= $student_id";
+
+    $result_query = mysqli_query($con, $sql_query);
+    $row = mysqli_fetch_row($result_query);
+    $user_type_query_str =trim(strval($row[0]));
+
     // apply password_hash()
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO users_table (`Email`, `Password`, `Full_Name`, `UserType`, `Student_ID`, `Passport_Number`) VALUES ('$email','$password_hash','$fullname','Student','$student_id', 'BN55')";
+    $sql = "INSERT INTO users_table (`Email`, `Password`, `Full_Name`, `UserType`, `Student_ID`, `Passport_Number`) VALUES ('$email','$password_hash','$fullname','$user_type_query_str','$student_id', '$passport_str')";
 
     if ($con->query($sql) === TRUE) {
         header("Location: Courses.php");
