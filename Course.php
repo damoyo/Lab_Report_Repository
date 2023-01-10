@@ -302,7 +302,7 @@ Lab_Report_ID not in (select Lab_Report_ID from lab_report_submissions where (St
 <br> Submitted files: ";
 
 
-            $Sub_result = mysqli_query($con,"SELECT `Submission_ID`, `Submission_Date`, lab_report_submissions.Lab_Report_ID,
+            $Sub_result = mysqli_query($con, "SELECT `Submission_ID`, `Submission_Date`, lab_report_submissions.Lab_Report_ID,
 lab_report_submissions.Student_id sub_std, lab_report_submissions.Course_Group_id, `Attachment1`,
 `Notes`, `Attachment2`, `Attachment3`, `Attachment4`, `Marks`, lab_report_submissions.Status, 
 `Title`,users_table.Full_Name,course_group_members_table.Student_ID
@@ -436,7 +436,7 @@ where Lab_Report_ID=$lab_repo_id and (lab_report_submissions.Student_id='$studen
                 
 
 
-            $Sub_result = mysqli_query($con,"SELECT `Submission_ID`, `Submission_Date`, lab_report_submissions.Lab_Report_ID,
+            $Sub_result = mysqli_query($con, "SELECT `Submission_ID`, `Submission_Date`, lab_report_submissions.Lab_Report_ID,
   lab_report_submissions.Student_id sub_std, lab_report_submissions.Course_Group_id, `Attachment1`,
   `Notes`, `Attachment2`, `Attachment3`, `Attachment4`, `Marks`, lab_report_submissions.Status, 
   `Title`,users_table.Full_Name,course_group_members_table.Student_ID
@@ -531,7 +531,7 @@ course_groups_table.Course_Group_id=course_group_members_table.Course_Group_id W
             }
             echo "<div  class='btn-default'><small> $name ($status)  $extra  $extra2  $extra3</small></div>";
                         
-            $rs2=mysqli_query($con,"SELECT `ID`, `Course_Group_id`, course_group_members_table.Student_ID, 
+            $rs2=mysqli_query($con, "SELECT `ID`, `Course_Group_id`, course_group_members_table.Student_ID, 
                             course_group_members_table.`Status`,users_table.Full_Name FROM `course_group_members_table` 
 INNER JOIN users_table on users_table.Student_ID=course_group_members_table.Student_ID
 where course_group_members_table.Course_Group_id=$id");
@@ -570,7 +570,7 @@ where course_group_members_table.Course_Group_id=$id");
 
 <?php
 }
-include 'Footer.php';
+include 'Footer.html';
 ?>
 
 
