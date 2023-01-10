@@ -409,7 +409,7 @@ where course_group_members_table.Course_Group_id=$id");
 
 <?php
     }
-    include 'Footer.php';
+    include 'Footer.html';
 ?>
 
 <script src="http://118.25.96.118/nor/css/jquery-1.11.1.min.js"></script>
