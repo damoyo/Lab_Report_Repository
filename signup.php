@@ -1,10 +1,8 @@
 <?php
 include 'NoDirectPhpAcess.php';
-?>
-
-<?php
 include 'Header.php';
 ?>
+
 
 <div class="row">
 
@@ -19,6 +17,7 @@ include 'Header.php';
 
                 <form method="post" action="Script_SignUp.php" id="signup_form">
                     <input type="hidden" name="form_signup" value="true" />
+
                     Full Name
                     <input type="text" name="fullname" placeholder="Your full name" class="form-control" value="<?php echo $_SESSION['user_fullname']; ?>" required="required" id="full_name"/>
 
@@ -51,17 +50,3 @@ include 'Header.php';
         </div>
     </div>
 </div>
-<style>
-    /*------------------------------------------------------------------
-[ Login Button ]*/
-    .btn-primary {
-        color: white;
-        border-radius: 5px;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-        background: rgb(75, 184, 240);
-        padding: 5px 105px;
-        font-family: Poppins-Regular;
-        font-size: 23px;
-        line-height: 1.5;
-    }
-</style>
