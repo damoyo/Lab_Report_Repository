@@ -6,22 +6,21 @@ include_once "get_mysql_credentials.php";
 ?>
 
 <!DOCTYPE html>
-<html>
 
 <head>
-  <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="./css/signin.css" rel="stylesheet" type="text/css" />
-  <link href = "./css/main.css" rel = "stylesheet" type = "text/css" /> <!--Our custom CSS-->
-  <script src="./css/jquery.min.js" type="text/javascript"></script>
-  <script src="./css/bootstrap.min.js" type="text/javascript"></script>
-  <script src="./css/jquery.datetimepicker.min.js" type="text/javascript"></script>
+    <link href = "./css/main.css" rel = "stylesheet" type = "text/css" /> <!--Our custom CSS-->
+    <script src="./css/jquery.min.js" type="text/javascript"></script>
+    <script src="./css/bootstrap.min.js" type="text/javascript"></script>
+    <script src="./css/jquery.datetimepicker.min.js" type="text/javascript"></script>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding-left:150px;padding-right:150px;margin:auto;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom_navbar">
     <a class="navbar-brand" href="~\..\index.php"> <img src="logo.png" style="width:30px;height:30px;"> LRR </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

@@ -16,6 +16,12 @@
      border-color: #00ff66;
  }
 
+ .custom_navbar{
+     padding-left:150px;
+     padding-right:150px;
+     margin:auto;
+ }
+
 .nav-tabs {
     border-color: #00ff66;
 }
@@ -133,7 +139,7 @@ a {
 img {
     max-width:100%;
     height: auto;
-    position:relative;
+
     right:-95px;
     top:1px;"
 }
