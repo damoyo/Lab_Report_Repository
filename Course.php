@@ -1,15 +1,14 @@
 <?php
-include 'NoDirectPhpAcess.php';
-?>
-
-
-<?php
+include 'NoDirectPhpAccess.php';
 $page='Courses+';
 include 'Header.php';
 $student_id = $_SESSION["user_student_id"];
 $group_id = $_SESSION["user_group_id"];
 $c_date = date("Y-m-d H:i");
+?>
 
+
+<?php
 
 if(!empty($_GET["url"]))
 {

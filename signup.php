@@ -1,5 +1,5 @@
 <?php
-include 'NoDirectPhpAcess.php';
+include 'NoDirectPhpAccess.php';
 include 'Header.php';
 ?>
 

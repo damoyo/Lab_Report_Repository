@@ -1,7 +1,7 @@
 <?php
 /** @noinspection ALL */
 session_start();
-include 'NoDirectPhpAcess.php';
+include 'NoDirectPhpAccess.php';
 include_once "get_mysql_credentials.php";
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(E_ALL); //as suggested by others add error logging

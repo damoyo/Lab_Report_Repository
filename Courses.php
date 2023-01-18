@@ -1,73 +1,55 @@
 <?php
-include 'NoDirectPhpAcess.php';
+include 'NoDirectPhpAccess.php';
+$page='Courses';
+include 'Header.php';
+$user_d = $_SESSION['user_id'];
 ?>
 
 
 <?php
 
-
-$page='Courses';
-include 'Header.php';
-
-$user_d = $_SESSION['user_id'];
-
+//Show this if user is leccturer or TA
 if( $_SESSION['user_type']=="Lecturer" || $_SESSION['user_type']=="TA")
 {
     ?>
-
-
-
     <!--    FOR LECTURER-->
-
-
-        <div class="row" style="width:80%;margin:auto; text-align:left;">
-   
-
+    <div class="row" style="width:80%;margin:auto; text-align:left;">
     <script src="./css/jquery-1.11.1.min.js"></script>
     <script src="./css/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="./css/jquery-ui.css" />
 
-
     <script>
-    
-
-    function extend_deadline(id) {
-    
-        var dropstudents=$("#dropstudents").html();
-   
-        try
+        function extend_deadline(id) {
+            var dropstudents=$("#dropstudents").html();
+           try
         {
-        
-
             $('<form id="frm" method="get" action="Script.php">\n\
-    <input type="hidden" name="extenddeadline" value="true" >\n\
-   <input type="hidden" name="id" value="'+id+'" > \n\
-New Date/Time <br><input type="date" name="date" required=""> <input type="time" name="time" required=""> \n\
-  \n\
-<br><input type="radio" value="1" name="type" required=""> Extend for All<hr>  \n\
-<input type="radio" value="2" name="type" required=""> Extend for these Individual Students \n\
- '+dropstudents+'   \n\
-</form>').dialog({
-        modal: true,
-         title:'Extend Deadline',
-         buttons: {
-            'Submit': function () {
-                $('#frm').submit();
-     
-                $(this).dialog('close');
-            },
-         'X': function () {
-  
-             $(this).dialog('close');
-         }
-   
-         }
-    });
+                    <input type="hidden" name="extenddeadline" value="true" >\n\
+                    <input type="hidden" name="id" value="'+id+'" > \n\
+                    New Date/Time <br><input type="date" name="date" required=""> <input type="time" name="time" required=""> \n\
+                    \n\
+                    <br><input type="radio" value="1" name="type" required=""> Extend for All<hr>  \n\
+                    <input type="radio" value="2" name="type" required=""> Extend for these Individual Students \n\
+                    '+dropstudents+'   \n\
+            </form>').dialog({
+                modal: true,
+                title:'Extend Deadline',
+                buttons: {
+                    'Submit': function () {
 
+                        $('#frm').submit();
+                        $(this).dialog('close');
+                    },
+
+                     'X': function () {
+                            $(this).dialog('close');
+                           }
+
+                    }}
+            );
         }catch(e){ alert(e); }
     }
-    
-        </script>
+    </script>
     
 
 <?php
@@ -89,14 +71,14 @@ New Date/Time <br><input type="date" name="date" required=""> <input type="time"
                 $url=$row['URL'];
                 $id=$row['Course_ID'];
                 $course_id=$row['Course_ID'];
-                echo    "  
-                  
-                        <div class='alert> <a href='~\..\Courses.php?course=$url'>   <div class='panel'>
-  ($code) - $name 
-   <br> <span style='font-size:8pt'>Faculty: $faculty | Year: $academic | Lecturer: $lecturer </span>
-</div></a>
-                        <hr></div></div> <div class='row' style='width:80%;margin:auto; text-align:left;'>
- ";
+
+                echo    "                   
+                        <div class='alert> <a href='~\..\Courses.php?course=$url'>
+                            <div class='panel'> ($code) - $name <br>
+                                <span style='font-size:8pt'>Faculty: $faculty | Year: $academic | Lecturer: $lecturer </span>
+                            </div><hr>
+                        </div>
+                         <div class='row' style='width:80%;margin:auto; text-align:left;'></div>";
                
                 echo "<div class='col-md-5'>";
             }
